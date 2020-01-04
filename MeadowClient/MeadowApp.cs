@@ -68,7 +68,7 @@ namespace devMobile.IoT.FieldGateway.Client
          {
             sensor.Update();
 
-            Console.WriteLine($"{DateTime.UtcNow:hh:mm:ss}-TX T:{sensor.Temperature:0.0}C H:{sensor.Humidity:0}%");
+            Console.WriteLine($"{DateTime.UtcNow:HH:mm:ss}-TX T:{sensor.Temperature:0.0}C H:{sensor.Humidity:0}%");
 
             string payload = $"t {sensor.Temperature:0.0},h {sensor.Humidity:0}";
 
@@ -88,7 +88,7 @@ namespace devMobile.IoT.FieldGateway.Client
             string addressHex = BitConverter.ToString(e.Address);
             string messageText = UTF8Encoding.UTF8.GetString(e.Data);
 
-            Console.WriteLine($"{DateTime.UtcNow:hh:mm:ss}-RX PacketSnr {e.PacketSnr:0.0} Packet RSSI {e.PacketRssi}dBm RSSI {e.Rssi}dBm = {e.Data.Length} byte message {messageText}");
+            Console.WriteLine($"{DateTime.UtcNow:HH:mm:ss}-RX PacketSnr {e.PacketSnr:0.0} Packet RSSI {e.PacketRssi}dBm RSSI {e.Rssi}dBm = {e.Data.Length} byte message {messageText}");
          }
          catch (Exception ex)
          {
@@ -100,7 +100,7 @@ namespace devMobile.IoT.FieldGateway.Client
       {
          Led.IsOn = false;
 
-         Console.WriteLine("{0:HH:mm:ss}-TX Done", DateTime.Now);
+         Console.WriteLine("{0:HH:mm:ss}-TX Done", DateTime.UtcNow);
       }
    }
 }
